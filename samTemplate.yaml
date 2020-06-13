@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Parameters:
+  Account:
+    Type: String
+  SecurityGroupIds:
+    Type: List<AWS::EC2::SecurityGroup::Id>
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+  LifeCycle:
+    Type: String
+Resources:
+  ExampleLambda:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: 'my-example-lambda'
+      Handler: lambda.handler
+      Runtime: python3.8
+      Code: example-lambda.zip
+      Role: !Sub arn:aws:iam::${AWS::AccountId}:role/myapp01-lambda-lambda
+      Timeout: 300
+      VpcConfig:
+        SecurityGroupIds: !Ref SecurityGroupIds        
+        SubnetIds: !Ref SubnetIds
+      Environment:
+        Variables:
+          TestVar1: testval1

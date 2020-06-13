@@ -1,0 +1,10 @@
+{
+  "Parameters" : {
+    "VpcId": "",
+    "SecurityGroupIds":"",
+    "SubnetIds":"",
+	"Account": "string",
+    "LifeCycle" : "string"
+  },
+  "StackPolicy" : { }
+}

@@ -1,0 +1,9 @@
+version: 0.1
+phases:
+  build:
+    commands:
+      - zip -r source.zip *
+      - aws cloudformation package --template-file cft_template.json 
+artifacts:
+  files:
+    - '**/*' 
