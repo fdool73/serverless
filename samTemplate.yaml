@@ -17,7 +17,7 @@ Resources:
       Handler: lambda.handler
       Runtime: python3.8
       Code: example-lambda.zip
-      Role: !Sub arn:aws:iam::${AWS::AccountId}:role/myapp01-lambda-lambda
+      Role: !Sub arn:aws:iam::${AWS::AccountId}:role/rolename
       Timeout: 300
       VpcConfig:
         SecurityGroupIds: !Ref SecurityGroupIds        
